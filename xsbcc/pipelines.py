@@ -65,11 +65,11 @@ class FormatItemPipeline(object):
                 if len(item[key]) == 0:
                     item[key] = 'null'
                 elif len(item[key]) == 1:
-                    item[key] = '/'.join(''.join(item[key]).split())
+                    item[key] = ''.join(''.join(item[key]).split())
                 else:
                     item[key] = ''.join('|'.join(item[key]).split())
-            elif type(item[key] == str):  # 去掉string的\n
-                item[key] = '/'.join(item[key].split())
+            # elif type(item[key] == str):  # 去掉string的\n
+            #     item[key] = '/'.join(item[key].split())
             else:
                 pass
         return item
