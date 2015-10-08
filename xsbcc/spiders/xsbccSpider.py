@@ -17,40 +17,40 @@ class XsbccSpider(scrapy.Spider):
         divs = response.xpath('//tr')
         time = response.headers['Date']
         for div in divs:
-            items = div.xpath('./td/text()').extract()
+            items = div.re('(?<=>)[\s\S]*?(?=<)')
             # 序号
             xsb['time'] = time
-            xsb['serial_number'] = items[0]
+            xsb['serial_number'] = items[1]
             # 证券代码
-            xsb['securities_code'] = div.xpath('./td/a/text()').extract()
+            xsb['securities_code'] = items[4]
             # 证券简称
-            xsb['securities_abbr'] = items[1]
+            xsb['securities_abbr'] = items[7]
             # 转让方式
-            xsb['transfer_mode'] = items[2]
+            xsb['transfer_mode'] = items[9]
             # 前收盘价（元/股）
-            xsb['previous_price'] = items[3]
+            xsb['previous_price'] = items[11]
             # 最近成交价（元/股）
-            xsb['recent_price'] = items[4]
+            xsb['recent_price'] = items[13]
             # 成交金额(万元)
-            xsb['turnover_million'] = items[5]
+            xsb['turnover_million'] = items[15]
             # 成交量(万股)
-            xsb['volume_million'] = items[6]
+            xsb['volume_million'] = items[17]
             # 涨跌
-            xsb['amount_change'] = items[7]
+            xsb['amount_change'] = items[19]
             # 涨跌幅
-            xsb['rate_change'] = items[8]
+            xsb['rate_change'] = items[21]
             # 市盈率
-            xsb['PE_ratio'] = items[9]
+            xsb['PE_ratio'] = items[23]
             # 挂牌时间
-            xsb['listing_time'] = items[10]
+            xsb['listing_time'] = items[25]
             # 行业
-            xsb['industry'] = items[11]
+            xsb['industry'] = items[27]
             # 地区
-            xsb['area'] = items[12]
+            xsb['area'] = items[29]
             # 券商
-            xsb['broker'] = items[13]
+            xsb['broker'] = items[31]
             # 看路演人数
-            xsb['numbersOfPer'] = items[14]
+            xsb['numbersOfPer'] = items[33]
             yield xsb
 
         for url in response.xpath('//tr/td/a/@href').extract():
