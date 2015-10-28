@@ -1,6 +1,7 @@
 __author__ = 'bitfeng'
 
-公司概况
+
+# 公司概况
 {
     "securities_code": "833288",
     "registered_capital": "null",
@@ -18,7 +19,7 @@ __author__ = 'bitfeng'
     "company_secretaries": "马梅"
 }
 
-
+# 财务指标
 {
     "net_profit": "-18.06",
     "securities_code": "833520",
@@ -40,6 +41,7 @@ __author__ = 'bitfeng'
     "non_distribution_of_profit_per_share": ""
 }
 
+# 股本状况
 {
     "securities_code": "833663",
     "transfer_rights": "0",
